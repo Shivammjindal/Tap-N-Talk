@@ -12,17 +12,25 @@ export async function POST(request:NextRequest, response:NextResponse){
 
         await connect().then(() => console.log('User db connected'))
         
-        const { user } = await getCurrentUser()
+        const { user } = await getCurrentUser() || { user:null }
         const currUser = user
         const body = await request.json()
+
+        // if(!user){
+        //     return new NextResponse("No User available",{status: 401})
+        // }
 
         const {
             message,
             image,
             conversationId
-        } = body
+        } = body || {
+            message : null,
+            image : null,
+            conversationId : null
+        }
 
-        if(!currUser?._id || !currUser.email){
+        if(!conversationId || !currUser?._id || !currUser.email){
             return new NextResponse('Unauthorised User',{ status:401 })
         }
 
@@ -53,12 +61,12 @@ export async function POST(request:NextRequest, response:NextResponse){
             { path:'message' }
         ])
 
-        //this helps in serving our chats 
+        // //this helps in serving our chats 
         await pusherServer.trigger(conversationId,'new:message', newMessage)
 
         const lastMessage = updatedConversation.message[updatedConversation.message.length-1]
 
-        //this help in serving sidebars where we see's our conversation.
+        // //this help in serving sidebars where we see's our conversation.
         updatedConversation.users.map(async (user) => {
             await pusherServer.trigger(user.email!, 'conversation:update',{
                 id: conversationId,
@@ -70,7 +78,6 @@ export async function POST(request:NextRequest, response:NextResponse){
 
     } catch (error:any) {
         console.log("Error Occured", error)
-        return new NextResponse('internal server error',{status:500})
+        return new NextResponse('Error Occured',{status:500})
     }
-
 }

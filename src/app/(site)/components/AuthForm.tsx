@@ -31,7 +31,7 @@ function AuthForm() {
   const onSubmit:SubmitHandler<FieldValues> = async (data) => {
     setLoading(true)
     if(varient === "REGISTER"){
-      await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/register`,data)
+      await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}api/register`,data)
       .then(() =>{
         console.log("User Register Successfully")
         toast.success("User Registration Successfully")

@@ -1,11 +1,11 @@
-import { getSessions } from "./GetSessions"
+import { useSession } from "next-auth/react"
 import axios from "axios"
 
 const getCurrentUser = async () => {
 
     try {
 
-        const session = await  getSessions()
+        const { data:session } = useSession()
         if(!session?.user?.email){
             return null
         }

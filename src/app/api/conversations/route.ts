@@ -10,7 +10,7 @@ export async function POST(request:NextRequest, response:NextResponse){
 
         await connect().then(() => console.log('User db connected'))
 
-        const { user } = await getCurrentUser()
+        const { user } = await getCurrentUser() || { user : null }
         const body = await request.json()
         const {
             userId,
@@ -21,7 +21,7 @@ export async function POST(request:NextRequest, response:NextResponse){
 
         const currUser = user
 
-        if(!currUser?.id && !currUser?.email){
+        if(!user || !currUser?.id && !currUser?.email){
             return new NextResponse('Unauthorised User',{status:401})
         }
 

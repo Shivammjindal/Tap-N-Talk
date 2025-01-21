@@ -29,7 +29,7 @@ export async function POST(request:NextRequest, response:NextResponse){
             return new NextResponse('Invalid Data', {status:400})
         }
         
-        if(isGroup){
+        if(isGroup ){
             const newConversation = await Conversation.create({
                 name,
                 isGroup,

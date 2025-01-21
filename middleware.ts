@@ -16,8 +16,8 @@ export function middleware(req: NextRequest){
 
 export const config = {
   matcher: [
-    "api/:path*",
-    "users/:path*",
-    "conversations/:path*"
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}api/:path*`,
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}users/:path*`,
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}conversations/:path*`
   ]
 };

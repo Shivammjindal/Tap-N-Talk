@@ -32,7 +32,11 @@ const useRoutes = () => {
         {
             label:'Logout',
             href:'/',
-            onClick:() => { signOut(); toast.success('Logged Out Successfully'); router.push('/')},
+            onClick:() => { 
+                signOut(); 
+                console.log("Signing Out");
+                toast.success('Logged Out Successfully');
+            },
             icon: HiArrowRightOnRectangle
         }
     ],[])

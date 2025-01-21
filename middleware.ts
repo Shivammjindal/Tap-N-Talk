@@ -1,22 +1,15 @@
-import { withAuth } from "next-auth/middleware";
-import { NextResponse, type NextRequest } from "next/server";
+import { withAuth } from "next-auth/middleware"
 
 export default withAuth({
-  pages: {
-    signIn: "/"
+  pages:{
+    signOut:"/",
+    signIn:"/",
   }
-});
-
-export function middleware(req: NextRequest){
-  console.log("url",req.nextUrl)
-  const res = NextResponse.next()
-  res.headers.append('ACCESS-CONTROL-ALLOW-ORIGIN','*')
-  return res
-} 
+})
 
 export const config = {
   matcher: [
-    `/users/:path*`,
-    `/conversations/:path*`
+    '/users/:path*',
+    '/conversations/:path*'
   ]
 };

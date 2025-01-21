@@ -34,7 +34,7 @@ const ProfileSetUp:React.FC<ProfileSetupProps> = ({user,setModelOpen}) => {
             image: data.image,
         }
 
-        await axios.post('http://localhost:3000/api/users/update', updatedData);
+        await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users/update`, updatedData);
         router.push('/users');
     }
 

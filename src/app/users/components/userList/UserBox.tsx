@@ -16,7 +16,7 @@ const UserBox = ({data}:UserBoxProps) => {
     const handleClick = useCallback(() => {
         setLoading(true);
         //sending id at backend from which we do conversation. (Our Friend's Id)
-        axios.post('http://localhost:3000/api/conversations',{
+        axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/conversations`,{
             userId: data._id
         })
         .then((data) => {

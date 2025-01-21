@@ -14,7 +14,7 @@ const getConversation = async () => {
         return []
     }
     
-    const { data }:getConversationConversationProps = await axios.post('http://localhost:3000/api/getconversations',{userId:user._id})
+    const { data }:getConversationConversationProps = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getconversations`,{userId:user._id})
 
     return data
 }

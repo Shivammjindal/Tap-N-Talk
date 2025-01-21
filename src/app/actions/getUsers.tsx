@@ -8,7 +8,7 @@ export const getAllUsers = async () => {
         return null
 
     const email = session?.user?.email
-    const users = await axios.post('http://localhost:3000/api/allusers',{email})
+    const users = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/allusers`,{email})
     if(!users) return null
     
     return users.data

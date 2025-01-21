@@ -33,7 +33,7 @@ export const UserList = ({items}:UserListProps) => {
 
             console.log('Updateing List Recieved');
 
-            const { data } = await axios.post('http://localhost:3000/api/allusers',{ email:session?.data?.user?.email })
+            const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/allusers`,{ email:session?.data?.user?.email })
             
             setlistItems(data.users);
         }

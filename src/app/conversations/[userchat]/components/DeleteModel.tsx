@@ -20,7 +20,7 @@ export function MyModal({setModelOpen}:DeleteModelProps) {
       const data = {
         conversationId:userchat
       }
-      await axios.post('http://localhost:3000/api/deleteConversation',data)
+      await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/deleteConversation`,data)
       router.push('/conversations')
   }
 

@@ -19,7 +19,7 @@ const Body: React.FC<BodyProps> = ({initialMessages}) => {
  
   useEffect(() => {
     //load new conversation on welcoming the new one
-    axios.post(`http://localhost:3000/api/conversations/${conversationId}/seen`,conversationId)
+    axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/conversations/${conversationId}/seen`,conversationId)
   },[conversationId])
 
   useEffect(() => {
@@ -30,7 +30,7 @@ const Body: React.FC<BodyProps> = ({initialMessages}) => {
     const handleMessage = (message : FullMessageType) => {
 
       //alert everyone that we have seen the message.
-      axios.post(`http://localhost:3000/api/conversations/${conversationId}/seen`,conversationId)
+      axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/conversations/${conversationId}/seen`,conversationId)
 
       setMessage((current) => {
 

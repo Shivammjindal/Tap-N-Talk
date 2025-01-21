@@ -11,7 +11,7 @@ const getCurrentUser = async () => {
         }
         
         const email = session?.user?.email
-        const user = await axios.post('http://localhost:3000/api/users',{ email })
+        const user = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users`,{ email })
         if(!user){
             return null;
         }

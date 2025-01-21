@@ -29,7 +29,7 @@ function Form() {
         setValue('message','',{ shouldValidate: true })
         const { message } = data
 
-        axios.post('http://localhost:3000/api/message',{
+        axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/message`,{
             message,
             conversationId
         })
@@ -37,7 +37,7 @@ function Form() {
 
     const handleUpload = (result:any) => {
 
-        axios.post('http://localhost:3000/api/message',{
+        axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/message`,{
             image:result?.info?.secure_url,
             // message:"image",
             conversationId

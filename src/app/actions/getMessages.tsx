@@ -74,7 +74,7 @@ const getMessages = async (
     conversationId:string
 ) => {
 
-    const { data } = await axios.post('http://localhost:3000/api/getmessages',{conversationId:conversationId})
+    const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getmessages`,{conversationId:conversationId})
 
     console.log('Message Fetching Done')
 

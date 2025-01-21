@@ -34,7 +34,7 @@ export default function GroupChatModel({ users,active,setActive }:GroupChatProps
     const { user } = await getCurrentUserClient(data?.user?.email!)
     const users = [...selector,user]
 
-    const response = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/conversations`,{
+    const response = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}api/conversations`,{
       isGroup: true,
       members: users,
       name : name

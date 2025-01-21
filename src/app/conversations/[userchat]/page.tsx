@@ -16,8 +16,8 @@ export default function Conversation() {
   const [conversation, setConversation] = useState<null | FullConversationType>(null)
 
   const GetRequirements = async () => {
-    const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getmessages`,{conversationId: userchat})
-    const conversationData = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getconversationbyid`,{ conversationId:userchat })
+    const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}api/getmessages`,{conversationId: userchat})
+    const conversationData = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}api/getconversationbyid`,{ conversationId:userchat })
 
     setConversation(conversationData.data);
     setMessages(data.messages);

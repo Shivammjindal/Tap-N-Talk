@@ -13,7 +13,7 @@ const getConversationbyId = async ({ conversationId }: { conversationId:string }
         return null
     }
 
-    const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getconversationbyid`,{conversationId}) 
+    const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}api/getconversationbyid`,{conversationId}) 
 
     return data
 }

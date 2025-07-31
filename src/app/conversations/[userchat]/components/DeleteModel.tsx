@@ -16,15 +16,12 @@ export function MyModal({setModelOpen}:DeleteModelProps) {
   const router = useRouter()
 
   const handleChatDelete = async () => {
-      console.log("Delete Chat in Progress ")
       const data = {
         conversationId:userchat
       }
       await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}api/deleteConversation`,data)
       router.push('/conversations')
   }
-
-  console.log("params ",userchat)
 
   return (
     <>

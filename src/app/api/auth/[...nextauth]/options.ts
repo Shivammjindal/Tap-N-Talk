@@ -63,8 +63,6 @@ export const authOptions: NextAuthOptions = {
             await connect().then(() => console.log('User db connected'))
 
             const userExist = await User.findOne({ email : user.email})
-            
-            console.log("User : ",userExist)
             if(!userExist){
                 await User.create({
                     name: user.name,
@@ -76,7 +74,6 @@ export const authOptions: NextAuthOptions = {
             const users = await User.find({ email : {$ne: user.email} })
 
             users.map(async (currentUser) => {
-                console.log('Sending Trigger ',currentUser.email);
                 await pusherServer.trigger(currentUser.email!,'userlist:update',{user})
             })
             

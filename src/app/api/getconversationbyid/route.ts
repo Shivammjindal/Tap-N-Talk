@@ -10,7 +10,6 @@ export async function POST(request:NextRequest, response:NextResponse){
         await connect().then(() => console.log('User db connected'))
 
         const { conversationId } = await request.json();
-        console.log("conversation ide : ",conversationId)
 
         if(!conversationId){
             new NextResponse('Invalid Data',{status:400})

@@ -44,7 +44,6 @@ const UserBox = ({data}:UserBoxProps) => {
                 lg:w-[16rem]
                 w-full
                 hover:bg-neutral-100
-                overflow-y-scroll
             '
         >
             <div 

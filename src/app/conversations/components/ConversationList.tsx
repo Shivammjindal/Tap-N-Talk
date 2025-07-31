@@ -62,7 +62,6 @@ function ConversationList({initialItems,users}:ConversationListProps) {
     }
 
     const conversationUpdate = (conversation: ConversationUpdateProps) => {
-      console.log("Items : ",items)
       setItems((current) => current.map((currentConversation) => {
         if(currentConversation._id === conversation.id){
           currentConversation.message.push(conversation.messages);
@@ -89,13 +88,14 @@ function ConversationList({initialItems,users}:ConversationListProps) {
       pusherClient.unbind('conversation:update',conversationUpdate)
       pusherClient.unbind('conversation:remove',handleConversationRemove)
     }
+    
   },[session?.data?.user?.email, conversationId, router])
 
   return (
     <div>
     {!loading ? <div
       className={clsx(
-        'lg:fixed overflow-y-scroll lg:left-[2.7rem] lg:top-0 pb-20',
+        'lg:fixed scrollbar-none  scrollbar-hide scrol lg:left-[2.7rem] lg:top-0 pb-20',
           isOpen? "hidden lg:block" : "block w-full left-0"
       )}
     >
@@ -114,16 +114,18 @@ function ConversationList({initialItems,users}:ConversationListProps) {
             </div>
           </div>
         </div>
-        <div className='flex flex-col overflow-scroll'>
-          {items.length && 
-            items.map((item) => {
-              return <ConversationBox
-                key={`${item._id || ''}`}
-                data={item}
-                selected={conversationId === item._id}
-              />
-          })}
-        </div>
+        <div className='overflow-y-scroll scrollbar-none'>
+          <div className='flex flex-col'>
+            {items.length && 
+              items.map((item) => {
+                return <ConversationBox
+                  key={`${item._id || ''}`}
+                  data={item}
+                  selected={conversationId === item._id}
+                />
+            })}
+          </div>
+          </div>
       </div>
     </div> : <div className='flex w-full h-screen items-center justify-center'><LoadingComponent/></div>}
     </div>

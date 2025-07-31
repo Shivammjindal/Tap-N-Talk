@@ -33,9 +33,7 @@ function ConversationBox({data,selected}:ConversationPropsType) {
     },[data.id, router])
 
     const lastMessage = useMemo(() => {
-        console.log('Running For new meaagw')
         const messages = data.message || []
-        console.log(messages[data.message.length-1])
         return messages[messages.length-1];
     },[data.message.length,data.message])
 
@@ -83,7 +81,6 @@ function ConversationBox({data,selected}:ConversationPropsType) {
 
     const lastMessageText = useMemo(() => {
         if(lastMessage?.body ){
-            console.log('Body -> ',lastMessage?.body)
             return lastMessage.body
         }
         if(lastMessage?.image){
@@ -115,7 +112,7 @@ function ConversationBox({data,selected}:ConversationPropsType) {
         <div
             className='min-w-0 flex-1'
         >
-            <div className='flex justify-between items-center mb-1'>
+            <div className='flex justify-between items-center'>
                 {data.name || otherUser.name}
             </div>
             <div className='flex justify-between items-center'>
@@ -123,7 +120,6 @@ function ConversationBox({data,selected}:ConversationPropsType) {
                         text-sm
                         antialiased
                         h-5
-                        overflow-hidden
                         m-0`,
                         hasSeen ? `font-normal` : `font-bold`)}
                 >

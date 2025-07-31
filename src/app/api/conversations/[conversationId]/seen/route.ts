@@ -54,7 +54,6 @@ export async function POST(request:NextRequest,{ params } : { params: IParams },
             }
         }
 
-        // console.log('Check',check)
         if(check){
             return NextResponse.json({msg:'Already Seen The Messages'})
         }
@@ -81,8 +80,6 @@ export async function POST(request:NextRequest,{ params } : { params: IParams },
             }
         },{returnDocument:"after"})
 
-        console.log('Updated Message : ', updateMessage)
-
         await pusherServer.trigger(user.email,'conversation:update',{
             id:conversationId,
             messages:updateMessageUnPopulated
@@ -96,7 +93,7 @@ export async function POST(request:NextRequest,{ params } : { params: IParams },
 
         return NextResponse.json(updateMessage)
     } catch (error) {
-        console.log("E:/",error)
+        
         return new NextResponse('Intersal Server Error in Seen Route', { status:500 })
     }
 }

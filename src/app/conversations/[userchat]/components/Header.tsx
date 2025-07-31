@@ -28,7 +28,6 @@ function Header({
     useEffect(() => {
 
         const statusHandler = () => {
-            console.log("Status Data ")
         }
 
         const conversationId:any = conversation?._id

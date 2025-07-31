@@ -40,7 +40,6 @@ export default function GroupChatModel({ users,active,setActive }:GroupChatProps
       name : name
     })
     
-    console.log(response)
     setActive(false)
     dispatch(resetMember()); 
   }

@@ -28,7 +28,7 @@ function DesktopSidebar({ currentUser }: DesktopSidebarprops) {
         lg:z-40
         lg:w-16
         xl:px-6
-        lg:overflow-y-auto
+        lg:overflow-hidden
         lg:bg-white
         lg:border-r-[1px]
         lg:pb-4

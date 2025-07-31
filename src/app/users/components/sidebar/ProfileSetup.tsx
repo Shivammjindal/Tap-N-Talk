@@ -53,7 +53,7 @@ const ProfileSetUp:React.FC<ProfileSetupProps> = ({user,setModelOpen}) => {
                 >
                     <div className="fixed inset-0 bg-black/25" />
                 </TransitionChild>
-                <div className="fixed inset-0 overflow-y-auto">
+                <div className="fixed inset-0 overflow-y-scroll">
                     <div className="flex min-h-full items-center justify-center p-4 text-center">
                     <TransitionChild
                         as={Fragment}

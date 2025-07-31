@@ -39,11 +39,8 @@ export async function POST(request:NextRequest, response:NextResponse){
             
             await newConversation.populate('users')
 
-            // console.log('New Conversation Found',newConversation)
-
             newConversation.users.forEach((user:UserModelType) => {
                 if(user.email){
-                    console.log('sending triggers',user.email)
                     pusherServer.trigger(user.email,'conversation:new',newConversation)
                 }
             })
@@ -63,7 +60,6 @@ export async function POST(request:NextRequest, response:NextResponse){
         })
 
         if(existingConversation){
-            console.log('ExistingUser Found')
             return NextResponse.json(existingConversation)
         }
 
@@ -84,7 +80,6 @@ export async function POST(request:NextRequest, response:NextResponse){
         return NextResponse.json(newConversation)
 
     } catch (error) {
-        console.log(error)
         return new NextResponse('Internal Server Error',{status:500})
     }
 }

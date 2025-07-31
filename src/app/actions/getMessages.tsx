@@ -76,8 +76,6 @@ const getMessages = async (
 
     const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}api/getmessages`,{conversationId:conversationId})
 
-    console.log('Message Fetching Done')
-
     pusherServer.trigger(conversationId,'user:active', { status: true })
 
     return data.messages

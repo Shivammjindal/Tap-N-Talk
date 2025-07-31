@@ -7,7 +7,6 @@ const getCurrentUser = async () => {
     try {
 
         const session = await getServerSession(authOptions);
-        console.log("Session Obtained ", session?.user?.email)
         if(!session?.user?.email){
             return null
         }

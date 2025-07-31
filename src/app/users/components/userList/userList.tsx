@@ -30,9 +30,6 @@ export const UserList = ({items}:UserListProps) => {
         if(!session.data?.user?.email) return
 
         const handleUserList = async () => {
-
-            console.log('Updateing List Recieved');
-
             const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}api/allusers`,{ email:session?.data?.user?.email })
             
             setlistItems(data.users);
@@ -55,9 +52,10 @@ export const UserList = ({items}:UserListProps) => {
                 pb-20
                 lg:pb-0
                 lg:left-16
-                overflow-y-auto
                 border-r-[1px]
                 border-gray-300
+                overflow-y-scroll
+                scrollbar-none
                 block
                 w-full
                 left-0
@@ -70,6 +68,7 @@ export const UserList = ({items}:UserListProps) => {
                         </div>
                     </div>
                 </div>
+                
                 {
                     listItems.map((item) => (
                         <UserBox key={`${item._id}`} data={item}/>

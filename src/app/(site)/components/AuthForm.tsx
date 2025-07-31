@@ -20,7 +20,6 @@ function AuthForm() {
 
   useEffect(() => {
     if(session?.status === "authenticated"){
-      console.log('authenticated')
       router.push('/users')
     }
     //dependencies m jis cheej k change hone s exact change krna ho vhi dale. pura object pass n kre
@@ -33,12 +32,10 @@ function AuthForm() {
     if(varient === "REGISTER"){
       await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}api/register`,data)
       .then(() =>{
-        console.log("User Register Successfully")
         toast.success("User Registration Successfully")
         signIn("credentials",data)
       })
       .catch(() => {
-        console.log("User Registration Failure")
         toast.error("Invalid Inputs Plase Try Again")
       })
     }
@@ -50,11 +47,9 @@ function AuthForm() {
       })
       .then((callback) => {
         if(callback?.error){
-          console.log('unable to login')
           toast.error("Invalid Credentials Unable to Login")
         }
         if(callback?.ok && !callback?.error){
-          console.log('loggin success')
           toast.success("Logged in Successfully")
         }
       })
@@ -72,11 +67,9 @@ function AuthForm() {
       { redirect:false })
       .then((callback) => {
         if(callback?.error){
-          console.log('Error Occured in Loggin in with Github')
           toast.error('Unable To Login Please Try Again')
         }
         if(!callback?.error && callback?.ok){
-          console.log('Logged in Successfully')
           toast.success("Logged in Successfully")
         }
       }

@@ -34,7 +34,6 @@ const useRoutes = () => {
             href:'/',
             onClick:() => { 
                 signOut(); 
-                console.log("Signing Out");
                 toast.success('Logged Out Successfully');
             },
             icon: HiArrowRightOnRectangle

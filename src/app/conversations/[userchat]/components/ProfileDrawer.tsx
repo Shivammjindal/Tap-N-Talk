@@ -43,8 +43,6 @@ export const ProfileDrawer: React.FC<ProfileDrawerProps> = ({isOpen,data,onClose
         return isActive ? 'Online' : 'Offline'
     },[data, isActive])
 
-    console.log("Model Open ",modelOpen)
-
     return (
         <>
             <div className="fixed z-50">
